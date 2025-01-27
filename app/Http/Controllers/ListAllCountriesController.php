@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use app\Services\Countries\CountriesThirdPartyApiClient;
 use Illuminate\Support\Facades\Cache;
+use Symfony\Component\HttpFoundation\Response;
 
 class ListAllCountriesController extends Controller
 {
@@ -15,15 +16,26 @@ class ListAllCountriesController extends Controller
     }
 
     /**
-     * @return string
+     * @return Response
      */
-    public function index(): string
+    public function index(): Response
     {
-        return Cache::remember('countries_list', '86400', function () {
-            $resource = $this->client->listAllCountries();
+        if (!Cache::has('countries_list')) {
+            try {
+                $resource = $this->client->listAllCountries();
+                Cache::set('countries_list', $resource->toJson());
+            } catch (\Exception $e) {
+                return response()->json([
+                    'error' => true,
+                    'message' => $e->getMessage(),
+                ], 404);
+            }
+        }
 
-            return $resource->toJson();
-        });
+        return response(
+            Cache::get('countries_list'),
+            headers: ['Content-Type => application/json']
+        );
     }
 }
 

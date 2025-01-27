@@ -7,7 +7,6 @@ use App\Http\Resources\CountryResource;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
-use Illuminate\Support\Facades\Log;
 use Psr\Log\LoggerInterface;
 
 class CountriesThirdPartyApiClient
@@ -29,6 +28,7 @@ class CountriesThirdPartyApiClient
 
     /**
      * @return AnonymousResourceCollection
+     * @throws \Exception
      */
     public function listAllCountries(): AnonymousResourceCollection
     {
@@ -51,7 +51,7 @@ class CountriesThirdPartyApiClient
             }
         } catch (GuzzleException $e) {
             $this->log->error($e->getMessage());
-            $items = [];
+            throw new \Exception('Failed to fetch countries.');
         }
 
         return CountryResource::collection($items);

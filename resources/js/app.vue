@@ -9,7 +9,6 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script setup>
@@ -20,13 +19,15 @@
     const countries = ref(null);
 
     const fetchCountries = () => {
-
-        axios.get('/api/countries')
+        axios.get('/api/countries', {responseType: "json"})
             .then(response => {
                 countries.value = response.data;
+            }).catch(error => {
+                console.log(error)
             })
 
-    }
+        }
+
     onMounted(() => {
         fetchCountries();
     })
