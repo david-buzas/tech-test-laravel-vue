@@ -53,8 +53,8 @@ Run the following command and select as user in the prompt.
 
 `./auth0 login`
 
-This will require you to open the prompted link in your browser and grant all the neccesary permission.
-### 5. b) Create auth0 app
+This will require you to open the prompted link in your browser and grant all the necessary permission.
+### 5. b) Create auth0 apps
 Now run the next command:
 
 `./auth0 apps create \
