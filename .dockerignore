@@ -1,0 +1,17 @@
+.env
+.github
+.dockerignore
+.editorconfig
+composer.lock
+default.vcl
+docker-compose.yml
+Dockerfile
+README.md
+vendor
+nginx
+varnish
+resources
+public
+docker
+node_modules
+.git
