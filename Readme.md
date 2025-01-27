@@ -9,19 +9,18 @@ Find a location on your computer where you want to store the project. A director
 
 Launch a bash console there and clone the project.
 
-git clone https://github.com/organization/project.git
+`git clone https://github.com/david-buzas/tech-test-laravel-vue`
 
 ## 2. cd into the project and create auth config files
 You will need to be inside the project directory that was just created, so cd into it.
 
 `cd project_name`
 
-Now, you need to create two json files where the auth0 configuration will be stored. (this is optional if you don't want to re-create the configuration every time when the container restarted)
+Now, you need to create two json files where the auth0 configuration will be stored. 
 
 Name these empty files to:
 - .auth0.app.json
 - .auth0.api.json
-
 
 
 ## 3. Start the service
@@ -45,7 +44,7 @@ In order to find the respective container id, run the following command:
 
 `docker ps`
 
-and search for laravel-back-end container name
+and search for back-end-laravel container name
 ## 5. Configure Auth0
 When you are in the box, the next step is to configure Auth0. To do that, you need to follow the next instructions.
 
@@ -68,6 +67,9 @@ Now run the next command:
 --no-input \
 --json > .auth0.app.json
 `
+
+Note: You can change the name of apps to any of your choice.
+
 ### 5. c) Create auth0 apis
 Finally, run the last command:
 
@@ -77,6 +79,8 @@ Finally, run the last command:
 --offline-access \
 --no-input \
 --json > .auth0.api.json`
+
+Note: You can change the name of apis to any of your choice.
 
 ## 6. Open the application
 When you are done with all the steps above, open this link in your browser `http://localhost:8090` and Auth0 will ask you to authenticate yourself. Once it's done, the page will render with the countries' names and their respective flags.
