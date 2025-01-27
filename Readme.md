@@ -11,7 +11,7 @@ Launch a bash console there and clone the project.
 
 `git clone https://github.com/david-buzas/tech-test-laravel-vue`
 
-## 2. cd into the project and create auth config files
+## 2. cd into the project and create auth0 config files
 You will need to be inside the project directory that was just created, so cd into it.
 
 `cd project_name`
@@ -34,6 +34,7 @@ The following services will be deployed and please make sure that the required p
 - nginx on port 8090
 - redis cache on port 6379
 - vue on port 5173
+- laravel (nginx forwards requests internally, no ports outside the network)
 
 ## 4. Bash to back-end box
 Once the deployment is completed and the services are running, bash into the laravel back-end box with the following command:
