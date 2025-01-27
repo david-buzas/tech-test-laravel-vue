@@ -9,7 +9,7 @@ Find a location on your computer where you want to store the project. A director
 
 Launch a bash console there and clone the project.
 
-`git clone https://github.com/david-buzas/tech-test-laravel-vue`
+`git clone https://github.com/david-buzas/tech-test-laravel-vue <project_folder>`
 
 ## 2. cd into the project and create auth0 config files
 You will need to be inside the project directory that was just created, so cd into it.
